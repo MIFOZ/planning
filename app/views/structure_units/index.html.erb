@@ -1,0 +1,28 @@
+<body>
+	<div class="list_title title_w_btm_mrg">
+		Организационная структура предприятия
+	</div>
+
+	<div>
+		<table class="table_w_btm_mrg">
+		<header>
+			<th>№</th>
+			<th>Наименование</th>
+			<th>Тип</th>
+			<th>Код подразделения</th>
+			<th>Руководитель</th>
+			<th>Родитель</th>
+		</header>
+			<% @structure_units.each do |structure_unit| %>
+				<%= render 'structure_unit', :structure_unit => structure_unit %>
+			<% end %>
+		</table>
+	</div>
+
+	<div>
+		<%= button_to 'Добавить', { :action => 'new'}, :method => :get %><b />
+		<%= button_to 'Назад', application_catalogue_path %>
+	</div>
+
+	
+</body>

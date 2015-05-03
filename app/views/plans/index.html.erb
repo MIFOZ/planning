@@ -1,0 +1,31 @@
+<body>
+	<div class="list_title title_w_btm_mrg">
+		Планы работ Центра
+	</div>
+
+	<div>
+		<table class="table_w_btm_mrg">
+		<header>
+			<th>№</th>
+			<th>Наименование плана работ</th>
+			<th>Тип</th>
+			<th>Заказ</th>
+			<th>Состояние</th>
+			<th>Подготовил</th>
+			<th>Подразделение</th>
+		</header>
+			<% @plans.each do |plan| %>
+				<%= render 'plan', :plan => plan %>
+			<% end %>
+		</table>
+	</div>
+
+	<div>
+		<%= button_to 'Добавить', { :action => 'new'}, :method => :get %><b />
+	</div>
+
+	<div>
+		<%= button_to 'Справочник', application_catalogue_path %><b />
+	</div>
+
+</body>

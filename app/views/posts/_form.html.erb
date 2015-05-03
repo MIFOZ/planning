@@ -1,0 +1,11 @@
+<%= form_for @post do |f| %>
+	<div class="inline_blocks">
+		<%= f.label 'Введите наименование должности' %> <br />
+		<%= f.text_field :title %> <br />
+	</div>
+
+	<%= f.submit 'Сохранить' %>
+	<div>
+		<%= link_to 'Отмена', posts_path %>
+	</div>
+<% end %>

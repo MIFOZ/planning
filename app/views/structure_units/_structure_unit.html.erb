@@ -1,0 +1,9 @@
+<tr>
+	<td><%= structure_unit.id %></td>
+	<td><%= structure_unit.name %></td>
+	<td><%= StructureUnit::type2[tructure_unit.structure_type] %></td>
+	<td><%= structure_unit.code %></td>
+	<td><%= structure_unit.head.to_name_w_initials %></td>
+	<td><%= structure_unit.parent.name %></td>
+	<td><%= link_to 'Изменить', edit_structure_unit_path(structure_unit) %>
+</tr>

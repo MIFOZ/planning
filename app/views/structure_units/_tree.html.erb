@@ -1,0 +1,8 @@
+<% content_tag :li, :id => dom_id(structure_unit) do %>
+  <span class="handle"><%= structure_unit.name %></span>    
+  <% content_tag :ul do %>
+   <% for child in structure_unit.children do %>
+    <%= render :partial => "tree", :locals => {:structure_unit => child }%>
+   <% end %>
+  <% end unless structure_unit.leaf? %>
+ <% end %>

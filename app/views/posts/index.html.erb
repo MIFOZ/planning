@@ -1,0 +1,27 @@
+<body>
+	<div class="list_title title_w_btm_mrg">
+		Должности
+	</div>
+
+	<div>
+		<table class="table_w_btm_mrg">
+		<header>
+			<th>№</th>
+			<th>Наименование</th>
+		</header>
+			<% @posts.each do |post| %>
+				<tr>
+					<td><%= post.id %></td>
+					<td><%= post.title %></td>
+					<td><%= link_to 'Изменить', edit_post_path(post) %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+
+	<div>
+		<%= button_to 'Добавить', { :action => 'new'}, :method => :get %><b />
+		<%= button_to 'Назад', application_catalogue_path %>
+	</div>
+
+</body>

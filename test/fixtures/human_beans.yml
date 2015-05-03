@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  patronymic: MyString
+  is_head: false
+  default_deputy: 
+  deputy_by_order: 
+
+two:
+  first_name: MyString
+  last_name: MyString
+  patronymic: MyString
+  is_head: false
+  default_deputy: 
+  deputy_by_order: 

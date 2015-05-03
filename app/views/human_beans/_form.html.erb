@@ -1,0 +1,27 @@
+<%= simple_form_for @human_bean do |f| %>
+	<div>
+		<div class="inline_blocks">
+			<%= f.label 'Укажите фамилию' %> <br />
+			<%= f.text_field :last_name %> <br />
+		</div>
+
+		<div class="inline_blocks">
+			<%= f.label 'Укажите имя' %> <br />
+			<%= f.text_field :first_name %> <br />
+		</div>
+
+		<div class="inline_blocks">
+			<%= f.label 'Укажите отчество' %> <br />
+			<%= f.text_field :patronymic %> <br />
+		</div>
+
+		<div class="inline_blocks">
+			<%= f.association :post, :label => 'Укажите должность', include_blank: false %>
+		</div>
+	</div>
+
+	<%= f.button :submit, 'Сохранить' %>
+	<div>
+		<%= link_to 'Отмена', posts_path %>
+	</div>
+<% end %>

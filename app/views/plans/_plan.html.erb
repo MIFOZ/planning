@@ -1,0 +1,11 @@
+<tr>
+	<td><%= plan.id %></td>
+	<td><%= plan.name %></td>
+	<td><%= plan.work_type %></td>
+	<td><%= plan.work_id %></td>
+	<td><%= plan.state %></td>
+	<td><% human_bean = HumanBean.find(plan.created_by) %>
+	<%= name_w_initials(human_bean) %>
+	<td><%=  %></td>
+	<td><%= link_to 'Изменить', edit_plan_path(plan) %>
+</tr>

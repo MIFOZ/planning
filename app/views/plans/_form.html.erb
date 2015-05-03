@@ -1,0 +1,31 @@
+<%= form_for @plan do |f| %>
+	<div>
+		<div class="inline_blocks">
+			<%= f.label 'Укажите тип плана' %> <br />
+			<%= f.text_field :work_type %> <br />
+		</div>
+
+		<div class="inline_blocks">
+			<%= f.label 'Укажите БП' %> <br />
+			<%= f.text_field :workflow %> <br />
+		</div>
+
+		<div class="inline_blocks">
+			<%= f.label 'Укажите раздел' %> <br />
+			<%= f.text_field :workflow_section %> <br />
+		</div>
+
+		<div class="inline_blocks">
+			<%= f.label 'Укажите № заказа' %> <br />
+			<%= f.text_field :work_id %> <br />
+		</div>
+	</div>
+	<div>
+		<div>
+			<%= f.label 'Введите наименование плана' %> <br />
+			<%= f.text_field :name %> <br />
+		</div>
+	</div>
+
+	<%= f.submit 'Сохранить' %>
+<% end %>

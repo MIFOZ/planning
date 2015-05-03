@@ -1,0 +1,25 @@
+ <%= simple_form_for @structure_unit do |f| %>
+	<div>
+		<div class="inline_blocks">
+			<%= f.label 'Укажите наименование' %> <br />
+			<%= f.text_field :name %> <br />
+		</div>
+		<div class="inline_blocks">
+			<%= f.input :structure_type, :label => 'Укажите тип', :collection => StructureUnit.types, :include_blank => false %>
+		</div>
+		<div class="inline_blocks">
+			<%= f.input :code, :label => 'Укажите код подразделения', :include_blank => false %>
+		</div>
+		<div class="inline_blocks">
+			<%= f.association :head, :label => 'Укажите руководителя', :label_method => :to_name_w_initials, :value_method => :id, :include_blank => false %>
+		</div>
+		<div class="inline_blocks">
+			<%= f.association :parent, :label => 'Укажите родителя', include_blank: true %>
+		</div>
+	</div>
+
+	<%= f.submit 'Сохранить' %>
+	<div>
+		<%= link_to 'Отмена', structure_units_path %>
+	</div>
+<% end %>

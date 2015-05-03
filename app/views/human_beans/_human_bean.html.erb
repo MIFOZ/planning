@@ -1,0 +1,9 @@
+<tr>
+	<td><%= human_bean.id %></td>
+	<td><%= human_bean.last_name %></td>
+	<td><%= human_bean.first_name %></td>
+	<td><%= human_bean.patronymic %></td>
+	<td><%= human_bean.post.title %></td>
+	<td><%=  %></td>
+	<td><%= link_to 'Изменить', edit_human_bean_path(human_bean) %>
+</tr>

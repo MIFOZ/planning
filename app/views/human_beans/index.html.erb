@@ -1,0 +1,26 @@
+<body>
+	<div class="list_title title_w_btm_mrg">
+		Сотрудники
+	</div>
+
+	<div>
+		<table class="table_w_btm_mrg">
+		<header>
+			<th>№</th>
+			<th>Фамилия</th>
+			<th>Имя</th>
+			<th>Отечество</th>
+			<th>Должность</th>
+		</header>
+			<% @human_beans.each do |human_bean| %>
+				<%= render 'human_bean', :human_bean => human_bean %>
+			<% end %>
+		</table>
+	</div>
+
+	<div>
+		<%= button_to 'Добавить', { :action => 'new'}, :method => :get %><b />
+		<%= button_to 'Назад', application_catalogue_path %>
+	</div>
+
+</body>
