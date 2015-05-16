@@ -3,6 +3,7 @@ class PlansController < ApplicationController
 
 	def index
 		@plans = Plan.all
+		p 'eewqfqfw'
 	end
 
 	def new
@@ -10,11 +11,16 @@ class PlansController < ApplicationController
 	end
 
 	def edit
-		@posts = Post.all
+		@tasks = @plan.tasks
+		#@task = Task.new
 	end
 
 	def create
 		@plan = Plan.new(allowed_params)
+
+		@plan.created_at = Time.now
+		@plan.creation_date = Time.now
+		@plan.created_by = HumanBean.find_by :last_name => 'Ефимов'
 
 		if @plan.save
 			redirect_to plans_path
@@ -37,7 +43,7 @@ class PlansController < ApplicationController
 	end
 
 	def allowed_params
-		params.require(:plan).permit(:work_type, :workflow, :workflow_section, :work_id, :name, :created_by, :created_at)
+		params.require(:plan).permit(:work_type, :workflow_id, :project_id, :title, :comment)
 	end
 
 end

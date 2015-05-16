@@ -1,0 +1,27 @@
+<body>
+	<div class="list_title title_w_btm_mrg">
+		Бизнесс-процессы
+	</div>
+
+	<div>
+		<table class="table_w_btm_mrg">
+		<header>
+			<th>№ п/п</th>
+			<th>Наименование</th>
+			<th>Краткое наименование</th>
+			<th>Руководитель</th>
+			<th>Отв. исполнитель</th>
+		</header>
+			<% @workflows.each do |workflow| %>
+				<%= render 'workflow', :workflow => workflow %>
+			<% end %>
+		</table>
+	</div>
+
+	<div>
+		<%= button_to 'Добавить', { :action => 'new'}, :method => :get %><b />
+		<%= button_to 'Назад', application_catalogue_path %>
+	</div>
+
+	
+</body>

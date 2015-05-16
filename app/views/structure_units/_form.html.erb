@@ -5,7 +5,7 @@
 			<%= f.text_field :name %> <br />
 		</div>
 		<div class="inline_blocks">
-			<%= f.input :structure_type, :label => 'Укажите тип', :collection => StructureUnit.types, :include_blank => false %>
+			<%= f.input :structure_type, :label => 'Укажите тип', :collection => StructureUnit.structure_types.keys.to_a.map {|w| [w.humanize, w]}, :include_blank => false %>
 		</div>
 		<div class="inline_blocks">
 			<%= f.input :code, :label => 'Укажите код подразделения', :include_blank => false %>

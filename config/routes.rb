@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'workflows/index'
+
+  get 'workflows/new'
+
+  get 'workflows/edit'
+
+  get 'projects/index'
+
+  get 'projects/new'
+
+  get 'projects/edit'
+
   get 'structure_units/index'
 
   get 'structure_units/edit'
@@ -11,10 +23,19 @@ Rails.application.routes.draw do
   get 'human_beans/create'
   get 'human_beans/update'
 
-  resources :plans
+  resources :plans do
+    resources :tasks do
+      member do
+        patch :enter_change_state
+      end
+    end
+  end
+
   resources :human_beans
   resources :posts
   resources :structure_units
+  resources :projects
+  resources :workflows
 
   root 'plans#index'
 

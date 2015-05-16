@@ -1,31 +1,53 @@
-<%= form_for @plan do |f| %>
-	<div>
-		<div class="inline_blocks">
-			<%= f.label 'Укажите тип плана' %> <br />
-			<%= f.text_field :work_type %> <br />
-		</div>
-
-		<div class="inline_blocks">
-			<%= f.label 'Укажите БП' %> <br />
-			<%= f.text_field :workflow %> <br />
-		</div>
-
-		<div class="inline_blocks">
-			<%= f.label 'Укажите раздел' %> <br />
-			<%= f.text_field :workflow_section %> <br />
-		</div>
-
-		<div class="inline_blocks">
-			<%= f.label 'Укажите № заказа' %> <br />
-			<%= f.text_field :work_id %> <br />
-		</div>
-	</div>
-	<div>
-		<div>
-			<%= f.label 'Введите наименование плана' %> <br />
-			<%= f.text_field :name %> <br />
-		</div>
-	</div>
-
-	<%= f.submit 'Сохранить' %>
+<%= simple_form_for @plan do |f| %>
+<div>
+	<%= f.input :work_type, :collection => Plan.work_types.keys.to_a.map {|w| [w.humanize, w]}, :label => 'Укажите тип' %>
+	<%= f.association :workflow, :label => 'Укажите БП', :label_method => :to_short_title, include_blank: false %>
+	<%= f.association :workflow, :label => 'Укажите раздел', :label_method => :to_short_title, include_blank: false %>
+	<%= f.association :project, :label => 'Укажите № проекта', :label_method => :to_code, include_blank: false %>
+	<%= f.input :title, :label => 'Укажите наимернование' %>
+	<%= f.input :comment, :label => 'Введите комментарий' %>
+	<%= f.button :submit, 'Сохранить' %>
+</div>
 <% end %>
+
+<div class="wrapper">
+	<table class="table_w_btm_mrg" id="tasks">
+		<thead>
+			<tr>
+				<th></th>
+				<th>№</th>
+				<th>%</th>
+				<th>Наименование работы</th>
+				<th>Исполнитель</th>
+				<th>Метка</th>
+				<th>Тр/ем-ть</th>
+				<th>Длит-ть</th>
+				<th>Начало</th>
+				<th>Окончание</th>
+				<th>Статус</th>
+			</tr>
+			<tr>
+				<th></th>
+				<% for i in 1..10 %>
+					<th><%= i %></th>
+				<% end %>
+			</tr>
+		</thead>
+		<tr>
+			<th></th>
+			<th colspan="10" style="font-weight: bold; text-align: left">Исходные данные</th>
+		</tr>
+		<% @tasks.each do |task| %>
+			<%= render task %>
+		<% end %>
+	</table>
+</div>
+
+<div>
+	<%= button_to 'Добавить задачу', plan_tasks_path(@plan), {:id => 'add_task', :class => 'inline_blocks'} %>
+	<%= button_to 'Изменить', plan_tasks_path(@plan), {:id => 'add_task', :class => 'inline_blocks'} %>
+</div>
+
+<div>
+	<%= link_to 'Отмена', projects_path %>
+</div>

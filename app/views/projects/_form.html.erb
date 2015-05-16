@@ -1,0 +1,15 @@
+<%= simple_form_for @project do |f| %>
+<div>
+	<%= f.input :code, :label => 'Укажите номер' %>
+	<%= f.input :title, :label => 'Укажите наименование' %>
+	<%= f.association :manager, :label => 'Укажите руководителя', :label_method => :to_name_w_initials, include_blank: false %>
+	<%= f.association :exec, :label => 'Укажите отв. исполнителя', :label_method => :to_name_w_initials, include_blank: false %>
+	<%= f.input :openning_order_number, :label => 'Укажите номер приказа об открытии' %>
+	<%= f.input :openning_order_date, :label => 'Укажите дату приказа об открытии' %>
+	<%= f.association :workflow, :label => 'Укажите бизнесс-процесс' %>
+	<%= f.button :submit, 'Сохранить' %>
+</div>
+<% end %>
+<div>
+	<%= link_to 'Отмена', projects_path %>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idx: 1
+  title: MyString
+  short_title: MyString
+  manager_id: 
+  exec_id: 
+
+two:
+  idx: 1
+  title: MyString
+  short_title: MyString
+  manager_id: 
+  exec_id: 

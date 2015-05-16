@@ -1,11 +1,10 @@
 <tr>
 	<td><%= plan.id %></td>
-	<td><%= plan.name %></td>
-	<td><%= plan.work_type %></td>
-	<td><%= plan.work_id %></td>
+	<td><%= plan.title %></td>
+	<td><%= plan.workflow.short_title %></td>
+	<td><%= plan.project.code %></td>
 	<td><%= plan.state %></td>
-	<td><% human_bean = HumanBean.find(plan.created_by) %>
-	<%= name_w_initials(human_bean) %>
-	<td><%=  %></td>
+	<td><%= get_link_to_human_bean(plan.created_by) %></td>
+	<td><%= get_link_to_structure_unit(plan.created_by.branch) %></td>
 	<td><%= link_to 'Изменить', edit_plan_path(plan) %>
 </tr>

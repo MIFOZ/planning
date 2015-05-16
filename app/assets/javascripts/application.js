@@ -14,3 +14,31 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+jQuery.ajaxSetup({
+	'beforeSend': function(xhr) {xhr.setRequestHeader('Content-Type', 'application/javascript')}
+})
+
+jQuery.fn.submitWithAjax = function() {
+	this.click(function(event) {
+
+		var form = $(this).parent('form');
+		var action = form.attr('action');
+
+		$.ajax({
+			url: action,
+			type: 'POST',
+			data: { },
+			dataType: 'script'
+		});
+		return false;
+  	})
+}
+
+$(document).ready(function() {
+	$('#add_task').submitWithAjax();
+})
+
+$(document).ready(function() {
+	$('.task_checker').submitWithAjax();
+})

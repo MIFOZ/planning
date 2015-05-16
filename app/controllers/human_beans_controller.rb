@@ -1,5 +1,6 @@
 class HumanBeansController < ApplicationController
   before_action :set_human_bean, except: [:index, :new, :create]
+  before_action :set_filtered_branches, only: [:new, :edit]
 
   def index
     @human_beans = HumanBean.all;
@@ -31,12 +32,16 @@ class HumanBeansController < ApplicationController
   end
 
   private
-    def set_human_bean
-      @human_bean = HumanBean.find(params[:id])
-    end
+  def set_human_bean
+    @human_bean = HumanBean.find(params[:id])
+  end
 
-    def allowed_params
-      params.require(:human_bean).permit(:last_name, :first_name, :patronymic, :post_id)
-    end
+  def set_filtered_branches
+    @filtered_branches = StructureUnit.where(:structure_type => 1)
+  end
+
+  def allowed_params
+    params.require(:human_bean).permit(:last_name, :first_name, :patronymic, :branch_id, :post_id, :is_head)
+  end
 
 end

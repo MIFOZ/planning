@@ -3,6 +3,6 @@ class StructureUnit < ActiveRecord::Base
 	belongs_to :parent, :class_name => 'StructureUnit'
 	has_many :children
 
-	enum type2: { department: 0, branch: 1 }
+	enum structure_type: { Департамент: 0, Отдел: 1 }
 
 end

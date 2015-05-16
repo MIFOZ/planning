@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  parent_id: 
+  idx: 1
+  time_consuming: 1
+  continuance: 1.5
+  exec_id: 
+  planned_begin: 2015-05-08
+  planned_end: 2015-05-08
+  state: 1
+  completeness: 1
+
+two:
+  title: MyString
+  parent_id: 
+  idx: 1
+  time_consuming: 1
+  continuance: 1.5
+  exec_id: 
+  planned_begin: 2015-05-08
+  planned_end: 2015-05-08
+  state: 1
+  completeness: 1

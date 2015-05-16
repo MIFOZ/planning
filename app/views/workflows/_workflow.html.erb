@@ -1,0 +1,8 @@
+<tr>
+	<td><%= workflow.idx %></td>
+	<td><%= workflow.title %></td>
+	<td><%= workflow.short_title %></td>
+	<td><%= get_link_to_human_bean(workflow.manager) %></td>
+	<td><%= get_link_to_human_bean(workflow.exec) %></td>
+	<td><%= link_to 'Изменить', edit_workflow_path(workflow) %>
+</tr>

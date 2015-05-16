@@ -1,0 +1,13 @@
+ <%= simple_form_for @workflow do |f| %>
+<div>
+	<%= f.input :idx, :label => 'Укажите порядковый номер' %>
+	<%= f.input :title, :label => 'Укажите наименование' %>
+	<%= f.input :short_title, :label => 'Укажите краткое наименование' %>
+	<%= f.association :manager, :label => 'Укажите руководителя', :label_method => :to_name_w_initials, include_blank: false %>
+	<%= f.association :exec, :label => 'Укажите отв. исполнителя', :label_method => :to_name_w_initials, include_blank: false %>
+	<%= f.button :submit, 'Сохранить' %>
+</div>
+<% end %>
+<div>
+	<%= link_to 'Отмена', workflows_path %>
+</div>

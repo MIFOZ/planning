@@ -2,12 +2,24 @@
 	font-family: helvetica;
 }
 
+.wrapper {
+	margin-top: 2em
+}
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
+table {
+	border: none;
+}
 th {
 	font-weight: bold;
+}
+th:first-child, td:first-child {
+	border-left: none;
+	border-top: none;
+	border-bottom: none;
 }
 
 #form {

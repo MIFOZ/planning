@@ -1,0 +1,14 @@
+<tr>
+	<td><%= project.id %></td>
+	<td><%= project.code %></td>
+	<td><%= project.title %></td>
+	<td><%= get_link_to_human_bean(project.manager) %></td>
+	<td><%= get_link_to_human_bean(project.exec) %></td>
+	<td><%= project.openning_order_number %></td>
+	<td><%= project.openning_order_date %></td>
+	<td><%= project.closure_act_number %></td>
+	<td><%= project.closure_act_date %></td>
+	<td><%= project.completion_date %></td>
+	<td><%= project.workflow.short_title %></td>
+	<td><%= link_to 'Изменить', edit_project_path(project) %>
+</tr>

@@ -1,0 +1,35 @@
+<body>
+	<div class="list_title title_w_btm_mrg">
+		Проекты
+	</div>
+
+	<div>
+		<table class="table_w_btm_mrg">
+		<header>
+			<th>№ п/п</th>
+			<th>Номер</th>
+			<th>Наименование</th>
+			<th>Руководитель</th>
+			<th>Отв. исполнитель</th>
+			<th>Распоряжение-номер</th>
+			<th>Распоряжение-дата</th>
+			<th>Акт-номер</th>
+			<th>Акт-дата</th>
+			<th>Дата окончания</th>
+			<th>Бизнес-процесс</th>
+		</header>
+			<% @projects.each do |project| %>
+				<%= render project, :project => project %>
+			<% end %>
+		</table>
+	</div>
+
+	<div>
+		<%= button_to 'Добавить', { :action => 'new'}, :method => :get %><b />
+	</div>
+
+	<div>
+		<%= button_to 'Справочник', application_catalogue_path %><b />
+	</div>
+
+</body>

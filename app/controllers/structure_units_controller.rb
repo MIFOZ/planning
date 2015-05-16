@@ -7,12 +7,10 @@ class StructureUnitsController < ApplicationController
 
 	def new
 		@structure_unit = StructureUnit.new
-		@structure_unit.head = HumanBean.take
 	end
 
 	def create
 		@structure_unit = StructureUnit.new(allowed_params)
-		#@structure_unit.type = @structure_unit.structure_type
 
 		if @structure_unit.save
 			redirect_to structure_units_path
@@ -23,7 +21,6 @@ class StructureUnitsController < ApplicationController
 
 	def update
 		if @structure_unit.update_attributes(allowed_params)
-			#@structure_unit.type = @structure_unit.structure_type
 			redirect_to structure_units_path
 		else
 			renderer 'new'

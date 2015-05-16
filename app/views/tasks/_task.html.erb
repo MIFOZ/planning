@@ -1,0 +1,15 @@
+<tr>
+	<%= simple_form_for [@plan, task], :defaults => {label: false, :include_blank => false} do |f| %>
+	<td><input type="checkbox" id="<%= task.id %>" class="task_checker"></input></td>
+	<td><%= task.id %></td>
+	<td><%= task.completeness %><%= f.input :completeness, :collection => [0,25,50,75,100] %> </td>
+	<td><%= task.title %><%= f.input :title %> </td>
+	<td><%= get_link_to_human_bean(task.exec) %><%= f.association :exec, :label_method => :to_name_w_initials %></td>
+	<td><%=  %></td>
+	<td><%= task.time_consuming %><%= f.input :time_consuming %></td>
+	<td><%= task.continuance %><%= f.input :continuance %></td>
+	<td><%= task.planned_begin %><%= f.input :planned_begin %></td>
+	<td><%= task.planned_end %><%= f.input :planned_end %></td>
+	<td><%= task.state %></td>
+	<% end %>
+</tr>
