@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508161435) do
+ActiveRecord::Schema.define(version: 20150623174609) do
 
   create_table "human_beans", force: :cascade do |t|
     t.string   "first_name"
@@ -105,6 +105,17 @@ ActiveRecord::Schema.define(version: 20150508161435) do
   add_index "tasks", ["exec_id"], name: "index_tasks_on_exec_id"
   add_index "tasks", ["parent_task_id"], name: "index_tasks_on_parent_task_id"
   add_index "tasks", ["plan_id"], name: "index_tasks_on_plan_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_salt"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "human_bean_id"
+    t.string   "password_hash"
+  end
+
+  add_index "users", ["human_bean_id"], name: "index_users_on_human_bean_id"
 
   create_table "workflows", force: :cascade do |t|
     t.integer  "idx",         null: false

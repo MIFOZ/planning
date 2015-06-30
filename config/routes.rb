@@ -23,11 +23,12 @@ Rails.application.routes.draw do
   get 'human_beans/create'
   get 'human_beans/update'
 
+
   resources :plans do
+    member do
+      patch 'update_task'
+    end
     resources :tasks do
-      member do
-        patch :enter_change_state
-      end
     end
   end
 
@@ -36,8 +37,16 @@ Rails.application.routes.draw do
   resources :structure_units
   resources :projects
   resources :workflows
+  resources :current_tasks
 
-  root 'plans#index'
+  get 'login' => 'sessions#new', :as => 'login'
+  get 'logout' => 'sessions#destroy', :as => 'logout'
+  get 'sign_up' => 'users#new', :as => 'sign_up'
+
+  root 'users#new'
+
+  resources :users
+  resources :sessions
 
   post '/application/catalogue' => 'application#catalogue'
 

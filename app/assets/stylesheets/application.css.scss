@@ -7,11 +7,15 @@
 }
 
 table, th, td {
-    border: 1px solid black;
     border-collapse: collapse;
+    border: 1px solid black;
 }
-table {
-	border: none;
+.no-border, .no-border tr, .no-border th, .no-border td { 
+    border: none;
+
+    td {
+    	padding: .5em;
+    }
 }
 th {
 	font-weight: bold;
@@ -77,7 +81,12 @@ th:first-child, td:first-child {
 	}
 }
 
-.inline_blocks {
+.inline-blocks {
 	border: 1px black solid;
 	display: inline-block;
+}
+
+// For newly created forms
+.task-form {
+	display: none;
 }

@@ -1,18 +1,20 @@
 <%= simple_form_for @human_bean do |f| %>
-	<%= f.input :last_name, :label => 'Укажите фамилию' %>
+  <%= f.input :last_name, :label => 'Укажите фамилию' %>
 
-	<%= f.input :first_name, :label => 'Укажите имя' %>
+  <%= f.input :first_name, :label => 'Укажите имя' %>
 
-	<%= f.input :patronymic, :label => 'Укажите отчество' %>
+  <%= f.input :patronymic, :label => 'Укажите отчество' %>
 
-	<%= f.association :branch, :label => 'Укажите подразделение', :collection => @filtered_branches, include_blank: true %>
+  <%= f.association :branch, :label => 'Укажите подразделение', :collection => @filtered_branches, include_blank: true %>
 
-	<%= f.association :post, :label => 'Укажите должность', include_blank: false %>
+  <%= f.association :post, :label => 'Укажите должность', include_blank: false %>
 
-	<%= f.input :is_head, :label => 'Является руководителем?', :as => :boolean %>
+  <%= f.input :is_head, :label => 'Является руководителем?', :as => :boolean %>
 
-	<%= f.button :submit, 'Сохранить' %>
-	<div>
-		<%= link_to 'Отмена', human_beans_path %>
-	</div>
+  <%= f.input :email, :label => 'Введите e-mail' %> 
+
+  <%= f.button :submit, 'Сохранить' %>
+  <div>
+    <%= link_to 'Отмена', human_beans_path %>
+  </div>
 <% end %>

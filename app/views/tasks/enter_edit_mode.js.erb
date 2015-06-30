@@ -1,0 +1,8 @@
+var current_task_tr = $('#tasks').find('tr#<%= @task.id %>');
+
+$(current_task_tr).find('.task_form').each(function(){
+	$(this).show();
+});
+$(current_task_tr).find('.task_label').each(function(){
+	$(this).hide();
+});

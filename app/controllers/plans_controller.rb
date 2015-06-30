@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
 	before_action :set_plan, except: [:index, :new, :create]
+	before_action :set_plan_id, only: [:show, :edit]
 
 	def index
 		@plans = Plan.all
@@ -37,9 +38,25 @@ class PlansController < ApplicationController
 		end
 	end
 
+	def update_task
+		respond_to do |format|
+			format.js
+			format.html
+			format.json
+		end
+		
+		if params['edit-mode'] == 0
+
+		end
+	end
+
 	private
 	def set_plan
 		@plan = Plan.find(params[:id])
+	end
+
+	def set_plan_id
+		gon.plan_id = @plan.id
 	end
 
 	def allowed_params

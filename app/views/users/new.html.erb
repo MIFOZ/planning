@@ -1,0 +1,10 @@
+<h1>Авторизация</h1>
+
+<%= simple_form_for @user do |f| %>
+  <%= f.input :email, :as => :email, :label => 'Введите email' %>
+  <%= f.input :password, :as => :password, :label => 'Введите пароль' %>
+  <%= f.input :password_confirmation, :as => :password, :label => 'Повторите пароль' %>
+  <%= f.association :human_bean, :label => 'Укажите сотрудника', :label_method => :to_name_w_initials %>
+  <%= f.button :submit, 'Создать' %>
+</div>
+<% end %>

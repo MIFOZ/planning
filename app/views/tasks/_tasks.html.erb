@@ -1,0 +1,32 @@
+<%# javascript 'tasks.js' %>
+
+<table class="table_w_btm_mrg" id="tasks">
+  <thead>
+    <tr>
+      <th></th>
+      <th>№</th>
+      <th>%</th>
+      <th>Наименование работы</th>
+      <th>Исполнитель</th>
+      <th>Метка</th>
+      <th>Тр/ем-ть</th>
+      <th>Длит-ть</th>
+      <th>Начало</th>
+      <th>Окончание</th>
+      <th>Статус</th>
+    </tr>
+    <tr>
+      <th></th>
+      <% for i in 1..10 %>
+      <th><%= i %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tr>
+    <th></th>
+    <th colspan="10" style="font-weight: bold; text-align: left">Исходные данные</th>
+  </tr>
+  <% @tasks.each do |task| %>
+    <%= render task %>
+  <% end %>
+</table>

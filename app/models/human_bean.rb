@@ -1,6 +1,7 @@
 class HumanBean < ActiveRecord::Base
 	belongs_to :post
 	belongs_to :branch, :class_name => 'StructureUnit'
+  has_many :tasks, :foreign_key => :exec_id
 
 	enum is_head: { Да: true, Нет: false }
 

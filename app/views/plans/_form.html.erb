@@ -10,42 +10,16 @@
 </div>
 <% end %>
 
-<div class="wrapper">
-	<table class="table_w_btm_mrg" id="tasks">
-		<thead>
-			<tr>
-				<th></th>
-				<th>№</th>
-				<th>%</th>
-				<th>Наименование работы</th>
-				<th>Исполнитель</th>
-				<th>Метка</th>
-				<th>Тр/ем-ть</th>
-				<th>Длит-ть</th>
-				<th>Начало</th>
-				<th>Окончание</th>
-				<th>Статус</th>
-			</tr>
-			<tr>
-				<th></th>
-				<% for i in 1..10 %>
-					<th><%= i %></th>
-				<% end %>
-			</tr>
-		</thead>
-		<tr>
-			<th></th>
-			<th colspan="10" style="font-weight: bold; text-align: left">Исходные данные</th>
-		</tr>
-		<% @tasks.each do |task| %>
-			<%= render task %>
-		<% end %>
-	</table>
-</div>
+<div id="tasks" class="wrapper"><%= render 'tasks/tasks', :@tasks => @tasks %></div>
 
 <div>
-	<%= button_to 'Добавить задачу', plan_tasks_path(@plan), {:id => 'add_task', :class => 'inline_blocks'} %>
-	<%= button_to 'Изменить', plan_tasks_path(@plan), {:id => 'add_task', :class => 'inline_blocks'} %>
+	<%= button_to 'Добавить задачу', plan_tasks_path(@plan), {:id => 'add-task', :class => 'inline-blocks'} %>
+	<%= form_tag update_task_plan_path(@plan), {:method => 'patch', :id => 'edit-task-form'} do -%>
+		<%= hidden_field_tag 'edit-mode', 0 %>
+		<%= submit_tag 'Изменить задачу', :id => 'edit-task', :class => 'inline-blocks' %>
+	<% end -%>
+
+	<%= button_to 'Удалить задачу', plan_tasks_path(@plan), {:id => 'remove-task', :class => 'inline-blocks'} %>
 </div>
 
 <div>

@@ -12,33 +12,57 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-readyselector
 //= require turbolinks
-//= require_tree .
+
+function getUrlParameter(sParam)
+{
+	var sPageURL = window.location.search.substring(1);
+	var sURLVariables = sPageURL.split('&');
+	for (var i = 0; i < sURLVariables.length; i++) 
+	{
+		var sParameterName = sURLVariables[i].split('=');
+		if (sParameterName[0] == sParam) 
+		{
+			return sParameterName[1];
+		}
+	}
+}     
 
 jQuery.ajaxSetup({
-	'beforeSend': function(xhr) {xhr.setRequestHeader('Content-Type', 'application/javascript')}
+	'beforeSend': function(xhr) {
+		//xhr.setRequestHeader('Content-Type', 'application/javascript');
+		//xhr.setRequestHeader('Accept', 'application/javascript');
+	}
 })
 
-jQuery.fn.submitWithAjax = function() {
-	this.click(function(event) {
+formActionGetterCallback = function() {
+	var form = $(this).parent('form');
+	return form.attr('action');
+}
 
-		var form = $(this).parent('form');
-		var action = form.attr('action');
+jQuery.fn.submitWithAjax = function(actionGetterCallback, type, method) {
+
+	this.click(function(event) {
+		event.preventDefault();
+
+		alert(typeof actionGetterCallback);
+
+		var action = actionGetterCallback();
 
 		$.ajax({
 			url: action,
-			type: 'POST',
-			data: { },
+			type: type,
+			data: { _method: method },
 			dataType: 'script'
 		});
 		return false;
-  	})
+	})
 }
 
-$(document).ready(function() {
-	$('#add_task').submitWithAjax();
-})
-
-$(document).ready(function() {
-	$('.task_checker').submitWithAjax();
-})
+jQuery.fn.removeWithFadeOut = function()
+{
+	$(this).fadeOut(500, function() {
+		$(this).remove();
+	});
+}
