@@ -1,5 +1,25 @@
-<%# javascript 'tasks.js' %>
+<%= javascript_include_tag 'jquery.livequery.min.js' %>
+<%= javascript_include_tag 'jquery.timers.js' %>
+<%= stylesheet_link_tag 'jquery.svg.css' %>
+<%= javascript_include_tag 'platform.js' %>
+<%= stylesheet_link_tag 'gantt/platform.css' %>
+<%= javascript_include_tag 'date.js' %>
+<%= javascript_include_tag 'i18nJs.js' %>
+<%= javascript_include_tag 'dateField/jquery.dateField.js' %>
+<%= stylesheet_link_tag 'dateField/jquery.dateField.css' %>
+<%= javascript_include_tag 'jquery.JST.js' %>
+<%= stylesheet_link_tag 'gantt/gantt.css' %>
+<%= javascript_include_tag 'ganttUtilities.js' %>
+<%= javascript_include_tag 'ganttTask.js' %>
+<%= javascript_include_tag 'ganttDrawerSVG.js' %>
+<%= javascript_include_tag 'ganttGridEditor.js' %>
+<%= javascript_include_tag 'ganttMaster.js' %>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
 <%= javascript_include_tag 'tasks.js' %>
+
+<%= image_tag 'gantt/hasExternalDeps.png' %>
+<%= image_tag 'gantt/toggle_collapse.png' %>
 
 <%= render 'form' %>

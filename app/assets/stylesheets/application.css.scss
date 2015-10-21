@@ -1,9 +1,26 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 * {
-	font-family: helvetica;
+  font-family: helvetica;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.font-bold-table-container td {
+  font-weight: bold;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #337ab7;
 }
 
 .wrapper {
-	margin-top: 2em
+  margin-top: 2em
 }
 
 table, th, td {
@@ -14,79 +31,89 @@ table, th, td {
     border: none;
 
     td {
-    	padding: .5em;
+      padding: .5em;
     }
 }
 th {
-	font-weight: bold;
+  font-weight: bold;
 }
 th:first-child, td:first-child {
-	border-left: none;
-	border-top: none;
-	border-bottom: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
 }
 
 #form {
-	margin-top: 2em;
-	padding: 0 5%;
-	input[type="text"] {
-		width: 72%;
-		margin-right: 2%;
-		display: inline-block;
-		outline: none;
-		background: rgba(250,250,250,.4);
-		border: none;
-		height: 40px;
-		border-radius: 4px;
-		padding: 1em 2em;
-	}
-	input[type="submit"] {
-		background: rgba(250,250,250,.4);
-		outline: none;
-		border: none;
-		height: 40px;
-		border-radius: 4px;
-		width: 25%;
-		display: inline-block;
-	}
+  margin-top: 2em;
+  padding: 0 5%;
+  input[type="text"] {
+    width: 72%;
+    margin-right: 2%;
+    display: inline-block;
+    outline: none;
+    background: rgba(250,250,250,.4);
+    border: none;
+    height: 40px;
+    border-radius: 4px;
+    padding: 1em 2em;
+  }
+  input[type="submit"] {
+    background: rgba(250,250,250,.4);
+    outline: none;
+    border: none;
+    height: 40px;
+    border-radius: 4px;
+    width: 25%;
+    display: inline-block;
+  }
 }
 
 .links {
-	display: block;
-	margin: 1.5em auto 0 auto;
-	text-align: center;
-	font-size: 0.8em;
-	color: white;
-	a {
-		color: white;
-	}
+  display: block;
+  margin: 1.5em auto 0 auto;
+  text-align: center;
+  font-size: 0.8em;
+  color: white;
+  a {
+    color: white;
+  }
 }
 
 .list_title {
-	width: 100%;
-	text-align: center;
-	padding: 2px;
-	background: rgb(253,251,19);
-	font-size: 14pt;
+  width: 100%;
+  text-align: center;
+  padding: 2px;
+  background: rgb(253,251,19);
+  font-size: 14pt;
 }
 
 .title_w_btm_mrg {
-	margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .table_w_btm_mrg {
-	margin-bottom: 2em;
-	td { 
-    	padding: 10px;
-	}
+  margin-bottom: 2em;
+  td { 
+      padding: 10px;
+  }
 }
 
 .inline-blocks {
-	border: 1px black solid;
-	display: inline-block;
+  border: 1px black solid;
+  display: inline-block;
 }
 
 // For newly created forms
 .task-form {
-	display: none;
+  display: none;
 }
+
+hr {
+  color: black;
+}
+
+button {
+
+}
+
+@import "plans";

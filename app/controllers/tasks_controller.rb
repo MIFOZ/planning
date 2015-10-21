@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_plan
-  before_action :set_task, :only => [:update, :destroy]
+  before_action :set_task, :only => [:update, :destroy, :finish_editing]
 
   def create
     @task = @plan.tasks.build
@@ -16,12 +16,15 @@ class TasksController < ApplicationController
     else
       @task.idx = 0
     end
-      
-    @task.time_consuming = 8
-    @task.continuance = 2
-    @task.exec = HumanBean.take
-    @task.planned_begin = Time.now
-    @task.planned_end = Time.now
+    
+    current_user
+    human_bean = @current_user.human_bean
+    @task.labor_input_planned = 8
+    @task.duration_planned = 2
+    @task.exec = human_bean
+    @task.begin_planned = human_bean.nearest_free_time
+    p "begin_planned: #{@task.begin_planned}"
+    @task.end_planned = @task.begin_planned + 8.hour
     @task.state = 0
     @task.completeness = 0
     @task.save
@@ -33,16 +36,29 @@ class TasksController < ApplicationController
   end
 
   def edit
+    # old = 
   end
-
+  
   def update
+    new_task = @task
+    new_task.attributes = allowed_params
+
+    
+
+
+
     if @task.update_attributes(allowed_params)
       respond_to do |format|
-        format.html
-        format.js
+        format.html { render :nothing => true }
       end
     else
-      # renderer 'new'
+    end
+  end
+
+  def finish_editing
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
@@ -60,7 +76,7 @@ class TasksController < ApplicationController
   end
 
   def allowed_params
-    params.require(:task).permit(:title, :exec_id, :completeness, :time_consuming, :continuance, :planned_begin, :planned_end)
+    params.require(:task).permit(:title, :exec_id, :completeness, :labor_input_planned, :duration_planned, :begin_planned, :end_planned)
   end
 
 end

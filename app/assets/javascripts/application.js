@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require jquery-readyselector
 //= require turbolinks
+//= require jquery.svg.js
+
+//= require bootstrap-sprockets
 
 function getUrlParameter(sParam)
 {
@@ -27,7 +30,7 @@ function getUrlParameter(sParam)
 			return sParameterName[1];
 		}
 	}
-}     
+}
 
 jQuery.ajaxSetup({
 	'beforeSend': function(xhr) {
@@ -35,6 +38,8 @@ jQuery.ajaxSetup({
 		//xhr.setRequestHeader('Accept', 'application/javascript');
 	}
 })
+
+$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
 
 formActionGetterCallback = function() {
 	var form = $(this).parent('form');

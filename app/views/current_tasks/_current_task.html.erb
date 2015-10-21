@@ -1,6 +1,12 @@
 <tr id="<%= current_task.id %>">
   <td><input type="checkbox" class="task-checker"></input></td>
   <td><%= current_task_counter + 1 %></td>
+  <td><%= current_task.title %></td>
   <td><%= current_task.state %></td>
-  <td><%= current_task.state %></td>
+  <td><%= current_task.prio %></td>
+  <td><%= current_task.labor_input_planned %></td>
+  <td><%= current_task.labor_input_actual %></td>
+  <td><%= current_task.get_actual_duration %></td>
+  <td><%= current_task.begin_planned %></td>
+  <td><%= current_task.end_planned %></td>
 </tr>

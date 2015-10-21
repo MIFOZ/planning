@@ -7,4 +7,8 @@ class Plan < ActiveRecord::Base
 
 	enum work_type: { По_заказу: 0, По_проекту: 1, По_процессу: 2, По_протоколу_совещаний: 3, Произвольный: 4 }
 	enum state: { Подготовлен: 0 }
+
+  def running_status
+    
+  end
 end

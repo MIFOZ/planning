@@ -1,66 +1,70 @@
 class PlansController < ApplicationController
-	before_action :set_plan, except: [:index, :new, :create]
-	before_action :set_plan_id, only: [:show, :edit]
+  before_action :set_plan, except: [:index, :new, :create]
+  before_action :set_plan_id, only: [:show, :edit]
 
-	def index
-		@plans = Plan.all
-		p 'eewqfqfw'
-	end
+  def index
+    @plans = Plan.all
+  end
 
-	def new
-		@plan = Plan.new
-	end
+  def new
+    @plan = Plan.new
 
-	def edit
-		@tasks = @plan.tasks
-		#@task = Task.new
-	end
+    @mode = 'new'
+  end
 
-	def create
-		@plan = Plan.new(allowed_params)
+  def edit
+    @tasks = @plan.tasks
+    
+    @mode = 'edit'
+  end
 
-		@plan.created_at = Time.now
-		@plan.creation_date = Time.now
-		@plan.created_by = HumanBean.find_by :last_name => 'Ефимов'
+  def create
+    @plan = Plan.new(allowed_params)
 
-		if @plan.save
-			redirect_to plans_path
-		else
-			renderer 'new'
-		end
-	end
+    @plan.created_at = Time.now
+    @plan.creation_date = Time.now
 
-	def update
-		if @plan.update_attributes(allowed_params)
-			redirect_to plans_path
-		else
-			renderer 'new'
-		end
-	end
+    current_user
+    @plan.created_by = @current_user.human_bean
 
-	def update_task
-		respond_to do |format|
-			format.js
-			format.html
-			format.json
-		end
-		
-		if params['edit-mode'] == 0
+    if @plan.save
+      redirect_to plans_path
+    else
+      renderer 'new'
+    end
+  end
 
-		end
-	end
+  def update
+    if @plan.update_attributes(allowed_params)
+      redirect_to plans_path
+    else
+      renderer 'new'
+    end
+  end
 
-	private
-	def set_plan
-		@plan = Plan.find(params[:id])
-	end
+  def update_task
+    respond_to do |format|
+      format.js
+      format.html
+      format.json
+    end
+    
+    if params['edit-mode'] == 0
 
-	def set_plan_id
-		gon.plan_id = @plan.id
-	end
+    end
+  end
 
-	def allowed_params
-		params.require(:plan).permit(:work_type, :workflow_id, :project_id, :title, :comment)
-	end
+  private
+  def set_plan
+    @plan = Plan.find(params[:id])
+  end
+
+  def set_plan_id
+    gon.plan_id = @plan.id
+  end
+
+  def allowed_params
+    params.require(:plan).permit(:work_type, :workflow_id, :project_id, :title, :comment)
+  end
 
 end

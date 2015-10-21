@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  belongs_to :human_bean#, :class_name => 'HumanBean'
+  belongs_to :human_bean
 
   attr_accessor :password
   before_validation :encrypt_password

@@ -14,6 +14,17 @@ Rails.application.config.assets.version = '1.0'
   Rails.application.config.assets.precompile += ["#{controller}.js"]
 end
 
+
+Rails.application.config.assets.precompile += %w( ganttUtilities.js  ganttTask.js ganttDrawer.js ganttDrawerSVG.js ganttGridEditor.js ganttMaster.js gantt/gantt.css)
+Rails.application.config.assets.precompile += %w( platform.js gantt/platform.css )
+Rails.application.config.assets.precompile += %w( jquery.svg.css )
+Rails.application.config.assets.precompile += %w( jquery.JST.js )
+Rails.application.config.assets.precompile += %w( date.js )
+Rails.application.config.assets.precompile += %w( i18nJs.js )
+Rails.application.config.assets.precompile += %w( dateField/jquery.dateField.js dateField/jquery.dateField.css )
+Rails.application.config.assets.precompile += %w( jquery.livequery.min.js )
+Rails.application.config.assets.precompile += %w( jquery.timers.js )
+
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )

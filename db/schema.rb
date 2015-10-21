@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623174609) do
+ActiveRecord::Schema.define(version: 20150811174406) do
 
   create_table "human_beans", force: :cascade do |t|
     t.string   "first_name"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150623174609) do
     t.string   "title",                     null: false
     t.integer  "created_by_id",             null: false
     t.integer  "state",         default: 0
-    t.string   "comment",                   null: false
+    t.string   "commentary",                null: false
     t.datetime "creation_date",             null: false
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -87,19 +87,24 @@ ActiveRecord::Schema.define(version: 20150623174609) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string   "title",          null: false
-    t.integer  "plan_id",        null: false
+    t.string   "title",                           null: false
+    t.integer  "plan_id",                         null: false
     t.integer  "parent_task_id"
-    t.integer  "idx",            null: false
-    t.integer  "time_consuming", null: false
-    t.float    "continuance",    null: false
-    t.integer  "exec_id",        null: false
-    t.date     "planned_begin",  null: false
-    t.date     "planned_end",    null: false
-    t.integer  "state",          null: false
-    t.integer  "completeness",   null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "idx",                             null: false
+    t.integer  "labor_input_planned",             null: false
+    t.float    "duration_planned",                null: false
+    t.integer  "exec_id",                         null: false
+    t.date     "begin_planned",                   null: false
+    t.date     "end_planned",                     null: false
+    t.integer  "state",                           null: false
+    t.integer  "completeness",                    null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "prio",                default: 0, null: false
+    t.integer  "labor_input_actual"
+    t.float    "duration_actual"
+    t.date     "begin_actual"
+    t.date     "end_actual"
   end
 
   add_index "tasks", ["exec_id"], name: "index_tasks_on_exec_id"

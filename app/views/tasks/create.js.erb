@@ -1,3 +1,2 @@
 last_item = $('#tasks > tbody:last');
 $('<%= j (render @task) %>').hide().appendTo(last_item).fadeIn(600);
-// $(last_item).hide().append('<%= j (render @task) %>').fadeIn();

@@ -1,0 +1,11 @@
+alert('finish_editing.js');
+
+$('#tasks tr#<%= @task.id %>').replaceWith('<%= j render @task %>');
+
+var currentTr = $('#tasks tr#<%= @task.id %>');
+
+$(currentTr).find('.task-checker').prop('checked', true);
+
+$(currentTr).find('.task-form').each(function() {
+  $(this).on('change paste keyup', onChangeInputField);
+});

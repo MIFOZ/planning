@@ -2,14 +2,17 @@
   <%= simple_form_for [@plan, task], :defaults => {label: false, :include_blank => false}, :method => 'patch', :remote => true do |f| %>
     <td><input type="checkbox" class="task-checker"></input></td>
     <td><%= task.get_number_str %></td>
-    <td><%= label_tag task.completeness, nil, :class => 'task-label' %><%= f.input :completeness, :collection => [0,25,50,75,100], :selected => task.completeness, :input_html => { :class => 'task-form' } %> </td>
+    <td>
+      <%= label_tag task.completeness, nil, :class => 'task-label' %>
+      <%= f.input :completeness, :collection => [0,25,50,75,100], :selected => task.completeness, :input_html => { :class => 'task-form' } %>
+    </td>
     <td><%= label_tag task.title, nil, :class => 'task-label' %><%= f.input :title, input_html: { :class => 'task-form' } %> </td>
     <td><%= get_link_to_human_bean(task.exec, 'task-label') %><%= f.association :exec, :label_method => :to_name_w_initials, :input_html => { :class => 'task-form' } %></td>
     <td><%=  %></td>
-    <td><%= label_tag task.time_consuming, nil, :class => 'task-label' %><%= f.input :time_consuming, input_html: { :class => 'task-form' } %></td>
-    <td><%= label_tag task.continuance, nil, :class => 'task-label' %><%= f.input :continuance, input_html: { :class => 'task-form' } %></td>
-    <td><%= label_tag task.planned_begin, nil, :class => 'task-label' %><%= f.input :planned_begin, input_html: { :class => 'task-form' } %></td>
-    <td><%= label_tag task.planned_end, nil, :class => 'task-label' %><%= f.input :planned_end, input_html: { :class => 'task-form' } %></td>
+    <td><%= label_tag task.labor_input_planned, nil, :class => 'task-label' %><%= f.input :labor_input_planned, input_html: { :class => 'task-form' } %></td>
+    <td><%= label_tag task.get_planned_duration, nil, :class => 'task-label' %><%= f.input :planned_duration, input_html: { :class => 'task-form' } %></td>
+    <td><%= label_tag task.begin_planned, nil, :class => 'task-label' %><%= f.input :begin_planned, input_html: { :class => 'task-form' } %></td>
+    <td><%= label_tag task.end_planned, nil, :class => 'task-label' %><%= f.input :end_planned, input_html: { :class => 'task-form' } %></td>
     <td><%= task.state %></td>
   <% end %>
 </tr>

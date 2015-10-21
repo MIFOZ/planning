@@ -1,28 +1,28 @@
 <body>
   <div class="list_title title_w_btm_mrg">
-    Список работ с "___" __________ года по "___" __________ года
+    Список работ с "<%= @start_time.day %>" <%= @start_time.strftime("%B %y") %> года по "<%= @end_time.day %>" <%= @end_time.strftime("%B %y") %> года
   </div>
 
-  <div>
-    <table class="no-border">
+  <div class="font-bold-table-container">
+    <table class="no-border table_w_btm_mrg">
       <tr>
         <td>Запланировано работ:</td>
-        <td><%= @current_tasks.count %></td>
+        <td><%= @current_tasks_uncompleted.count %></td>
         <td>Выполнено работ:</td>
-        <td><%= @current_tasks.count %></td>
+        <td><%= @finished_tasks.count %></td>
         <td>Просрочено работ:</td>
-        <td><%= @current_tasks.count %></td>
+        <td><%= @overdue_tasks.count %></td>
       </tr>
       <tr>
         <td>Запланировано часов:</td>
-        <td><%= @current_tasks.count %></td>
+        <td><%= @total_labor_input_planned %></td>
         <td>Затрачено часов:</td>
-        <td><%= @current_tasks.count %></td>
+        <td><%= @current_tasks_uncompleted.count %></td>
       </tr>
     </table>
   </div>
 
-  <table class="table_w_btm_mrg" id="tasks">
+  <table class="table-condensed table_w_btm_mrg" id="tasks">
     <thead>
       <tr>
         <th rowspan="2"></th>
@@ -40,8 +40,12 @@
         <th>Факт</th>
       </tr>
     </thead>
-    <%= render partial: 'current_task', :collection => @current_tasks, :as => :current_task %>
+    <%= render partial: 'current_task', :collection => @current_tasks_uncompleted, :as => :current_task %>
   </table>
+
+  <hr>
+
+  <div class="list_title">Окно сообщений системы</div>
 
   <div>
     <%= button_to 'Справочник', application_catalogue_path %><b />

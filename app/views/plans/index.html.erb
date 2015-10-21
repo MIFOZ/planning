@@ -1,38 +1,35 @@
 <% javascript 'plans.js' %>
-<%# content_for :head do %>
-  <%#= javascript_include_tag 'plans.js' %>
-<%# end %>
 
 <body>
-	<div class="list_title title_w_btm_mrg">
-		Планы работ Центра
-	</div>
+  <div class="list_title title_w_btm_mrg">
+    Планы работ Центра
+  </div>
 
-	<div>
-		<table class="table_w_btm_mrg">
-			<thead>
-				<tr>
-					<th>№</th>
-					<th>Наименование плана работ</th>
-					<th>Тип</th>
-					<th>Заказ</th>
-					<th>Состояние</th>
-					<th>Подготовил</th>
-					<th>Подразделение</th>
-				</tr>
-			</thead>
-			<% @plans.each do |plan| %>
-				<%= render plan, :plan => plan %>
-			<% end %>
-		</table>
-	</div>
+  <div>
+    <table class="table_w_btm_mrg">
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Наименование плана работ</th>
+          <th>Тип</th>
+          <th>Заказ</th>
+          <th>Состояние</th>
+          <th>Подготовил</th>
+          <th>Подразделение</th>
+        </tr>
+      </thead>
+      <% @plans.each do |plan| %>
+        <%= render plan, :plan => plan %>
+      <% end %>
+    </table>
+  </div>
 
-	<div>
-		<%= button_to 'Добавить', { :action => 'new'}, :method => :get %><b />
-	</div>
+  <div>
+    <%= button_to 'Добавить', { :action => 'new'}, :method => :get %><b />
+  </div>
 
-	<div>
-		<%= button_to 'Справочник', application_catalogue_path %><b />
-	</div>
+  <div>
+    <%= button_to 'Справочник', application_catalogue_path %><b />
+  </div>
 
 </body>

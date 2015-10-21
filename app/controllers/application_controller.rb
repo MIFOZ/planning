@@ -15,4 +15,21 @@ class ApplicationController < ActionController::Base
 
     @current_user
   end
+
+  def get_overdue_tasks (tasks)
+    p "tasks: #{tasks}"
+    overdue_tasks = []
+    tasks.each do |task|
+      if !task.end_actual
+        if Time.now > task.end_planned
+          overdue_tasks.push(task)
+        end
+      elsif task.end_actual > task.end_planned
+          overdue_tasks.push(task)
+      end
+    end
+
+    return overdue_tasks
+  end
+
 end

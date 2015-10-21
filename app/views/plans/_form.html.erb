@@ -1,27 +1,47 @@
+<% if @mode == 'new' %>
+  <h1>Подготовка нового плана</h1>
+<% else %>
+  <h1>Изменение плана</h1>
+<% end %>
+
 <%= simple_form_for @plan do |f| %>
 <div>
-	<%= f.input :work_type, :collection => Plan.work_types.keys.to_a.map {|w| [w.humanize, w]}, :label => 'Укажите тип' %>
-	<%= f.association :workflow, :label => 'Укажите БП', :label_method => :to_short_title, include_blank: false %>
-	<%= f.association :workflow, :label => 'Укажите раздел', :label_method => :to_short_title, include_blank: false %>
-	<%= f.association :project, :label => 'Укажите № проекта', :label_method => :to_code, include_blank: false %>
-	<%= f.input :title, :label => 'Укажите наимернование' %>
-	<%= f.input :comment, :label => 'Введите комментарий' %>
-	<%= f.button :submit, 'Сохранить' %>
+  <%= f.input :work_type, :collection => Plan.work_types.keys.to_a.map {|w| [w.humanize, w]}, :label => 'Укажите тип' %>
+  <%= f.association :workflow, :label => 'Укажите БП', :label_method => :to_short_title, include_blank: false %>
+  <%= f.association :workflow, :label => 'Укажите раздел', :label_method => :to_short_title, include_blank: false %>
+  <%= f.association :project, :label => 'Укажите № проекта', :label_method => :to_code, include_blank: false %>
+  <%= f.input :title, :label => 'Укажите наимернование' %>
+  <%= f.input :commentary, :label => 'Введите комментарий' %>
+  <%= f.button :submit, 'Сохранить' %>
 </div>
 <% end %>
 
-<div id="tasks" class="wrapper"><%= render 'tasks/tasks', :@tasks => @tasks %></div>
-
 <div>
-	<%= button_to 'Добавить задачу', plan_tasks_path(@plan), {:id => 'add-task', :class => 'inline-blocks'} %>
-	<%= form_tag update_task_plan_path(@plan), {:method => 'patch', :id => 'edit-task-form'} do -%>
-		<%= hidden_field_tag 'edit-mode', 0 %>
-		<%= submit_tag 'Изменить задачу', :id => 'edit-task', :class => 'inline-blocks' %>
-	<% end -%>
-
-	<%= button_to 'Удалить задачу', plan_tasks_path(@plan), {:id => 'remove-task', :class => 'inline-blocks'} %>
+  <div class="plan-header">
+    <div class="plan-header-line">
+      <label>Бизнес-процесс</label>
+      <label><%= @plan.workflow.short_title %></label>
+    </div>
+  </div>
+  <div>
+    <div id="tasks" class="wrapper"><%= render 'tasks/tasks', :@tasks => @tasks %></div>
+    <p class="commentary">
+      Комментарий: <%= @plan.commentary %>
+    </p>
+  </div>
 </div>
 
 <div>
-	<%= link_to 'Отмена', projects_path %>
+  <%= button_to 'Добавить задачу', plan_tasks_path(@plan), {:id => 'add-task', :class => 'inline-blocks'} %>
+  <%= form_tag update_task_plan_path(@plan), {:method => 'patch', :id => 'edit-task-form'} do -%>
+    <%= hidden_field_tag 'edit-mode', 0 %>
+    <%= submit_tag 'Изменить задачу', :id => 'edit-task', :class => 'inline-blocks' %>
+  <% end -%>
+  <%= button_to 'Удалить задачу', plan_tasks_path(@plan), {:id => 'remove-task', :class => 'inline-blocks'} %>
+</div>
+
+<%= render 'gantt_auxilary' %>
+
+<div>
+  <%= link_to 'Отмена', projects_path %>
 </div>
