@@ -51,6 +51,6 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
 
-  post '/application/catalogue' => 'application#catalogue'
+  get '/application/catalogue' => 'application#catalogue'
   
 end

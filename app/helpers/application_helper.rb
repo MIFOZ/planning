@@ -60,8 +60,7 @@ module ApplicationHelper
 
   def get_link_to_head(branch)
     if branch
-      head = branch.head
-      get_link_to(head)
+      get_link_to_human_bean(branch.head)
     else
       ''
     end

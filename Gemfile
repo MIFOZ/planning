@@ -43,6 +43,9 @@ gem 'jquery-svg-rails'
 gem 'jquery-ui-rails'
 
 gem 'rspec-rails', :group => [:test, :development]
+
+gem 'rb-fsevent'
+
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'

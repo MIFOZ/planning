@@ -21,6 +21,11 @@ class HumanBean < ActiveRecord::Base
     end
   end
 
+  def occupancy
+    pending_tasks = tasks.where.not(:completeness => 100).where('end_planned > ?', Time.now).where('begin_actual != ?', nil)
+    pending_tasks.count
+  end
+
   def next_business_hour (date)
     next_date = business_day_in(date, 1)
   end

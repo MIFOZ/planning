@@ -252,6 +252,7 @@ DEPENDENCIES
   jquery-svg-rails
   jquery-ui-rails
   rails (= 4.2.1)
+  rb-fsevent
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
